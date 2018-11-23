@@ -344,8 +344,8 @@ class InterpreterSpec extends StreamSpec with GraphInterpreterSpecKit {
     }
 
     "work with expand-expand" in new OneBoundedSetup[Int](
-      new Expand(Iterator.from),
-      new Expand(Iterator.from)) {
+      new Expand(Iterator.from _),
+      new Expand(Iterator.from _)) {
 
       lastEvents() should be(Set(RequestOne))
 
