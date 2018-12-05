@@ -7,6 +7,7 @@ package akka.remote.artery
 import java.nio.ByteBuffer
 
 import scala.annotation.tailrec
+import scala.collection.immutable
 import scala.util.control.NonFatal
 import akka.actor.{ ActorRef, ExtendedActorSystem }
 import akka.event.{ Logging, LoggingAdapter }
@@ -298,6 +299,6 @@ private[remote] object RemoteInstruments {
         .dynamicAccess.createInstanceFor[RemoteInstrument](fqcn, Nil)
         .orElse(system.dynamicAccess.createInstanceFor[RemoteInstrument](fqcn, List(classOf[ExtendedActorSystem] → system)))
         .get
-    }.to(scala.collection.immutable.Vector)
+    }.to(immutable.Vector)
   }
 }
