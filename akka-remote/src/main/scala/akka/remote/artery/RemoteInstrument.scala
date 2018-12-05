@@ -7,11 +7,11 @@ package akka.remote.artery
 import java.nio.ByteBuffer
 
 import scala.annotation.tailrec
-import scala.collection.compat._
 import scala.util.control.NonFatal
 import akka.actor.{ ActorRef, ExtendedActorSystem }
 import akka.event.{ Logging, LoggingAdapter }
 import akka.util.{ OptionVal, unused }
+import akka.util.ccompat._
 
 /**
  * INTERNAL API

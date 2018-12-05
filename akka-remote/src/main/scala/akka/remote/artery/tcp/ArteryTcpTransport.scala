@@ -43,7 +43,7 @@ import akka.stream.scaladsl.Source
 import akka.stream.scaladsl.Tcp
 import akka.stream.scaladsl.Tcp.ServerBinding
 import akka.util.{ ByteString, OptionVal }
-import scala.collection.compat._
+import akka.util.ccompat._
 
 /**
  * INTERNAL API
