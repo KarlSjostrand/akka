@@ -22,6 +22,7 @@ import akka.cluster.InternalClusterAction._
 import akka.cluster.routing.{ ClusterRouterPool, ClusterRouterPoolSettings }
 import akka.routing.Pool
 import akka.util.ccompat._
+import akka.util.ccompat.imm._
 import com.typesafe.config.{ Config, ConfigFactory, ConfigRenderOptions }
 
 /**
@@ -404,7 +405,7 @@ final class ClusterMessageSerializer(val system: ExtendedActorSystem) extends Se
         .build()
 
     val reachability = reachabilityToProto(gossip.overview.reachability)
-    val members = (gossip.members: Set[Member] /* 2.13.0-M5 change cast to .unsorted */ ).map(memberToProto _)
+    val members = gossip.members.unsorted.map(memberToProto _)
     val seen = gossip.overview.seen.map(mapUniqueAddress)
 
     val overview = cm.GossipOverview.newBuilder.addAllSeen(seen.asJava).
